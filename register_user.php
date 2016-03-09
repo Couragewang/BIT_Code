@@ -19,10 +19,11 @@
         $bit_class=$_POST['bit_class'];
 
         if( $name == "" || $pwd == "" || $cpwd == "" || $phone == "" ){
-            echo "<script>alert('有字段为空，请重新输入！'); history.go(-1);</script>";
+            echo "<script>alert('输入信息有空值！'); history.go(-1);</script>";
         }else{
             if( $pwd == $cpwd ){
-                echo "insert done...<br/>";
+			    $data = $name.",".$pwd.",".$phone.",".$email.",".$school.",".$grade.",".$major.",".$bit_class;
+			    insert_data( $data );
             }else{
                 echo "<script>alert('密码不一致！'); history.go(-1);</script>";
             }
