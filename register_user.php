@@ -5,6 +5,8 @@
 </head>
 <body>
 <?php
+    require("mysql_db_api.php");
+
     if(isset($_POST['submit']) && $_POST['submit']='注册'){
         $name = $_POST['name'];
         $pwd = $_POST['passwd'];
