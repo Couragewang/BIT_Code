@@ -1,0 +1,22 @@
+.navbar{
+    padding: 5px;
+    margin: 0px;
+}
+.jumbotron{
+    background-color: #ffffff;
+    padding: 80px;
+    margin: 0px;
+    height: auto;
+}
+hr{
+    margin: 0px;
+    border-style: hidden;
+}
+/*.jumbotron h1{*/
+    /*text-align: center;*/
+/*}*/
+/*.jumbotron p{*/
+    /*text-align: center;*/
+    /*padding: 10px, 10px, 10px, 10px;*/
+    /*margin: 10px, 10px, 10px, 10px;*/
+ /*}*/

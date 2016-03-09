@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>demo</title>
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link href="../../css/index.css" rel="stylesheet">
+</head>
+<body>
+<div class="container-fluid">
+    <div class="header" id="c_header">
+        <h1 align="center">C++笔试/面试题</h1>
+    </div>
+
+    <div class="list-group" id="c_index">
+        <a href="#cpp_basic" class="list-group-item active">
+            <h7>C++基础知识</h7>
+            <i class="glyphicon glyphicon-chevron-right"></i>
+        </a>
+        <a href="#cpp_class" class="list-group-item ">
+            <h7>类和对象</h7>
+            <i class="glyphicon glyphicon-chevron-right"></i>
+        </a>
+        <a href="#cpp_obj" class="list-group-item">
+            <h7>继承&多态</h7>
+            <i class="glyphicon glyphicon-chevron-right"></i>
+        </a>
+    </div>
+
+    <div class="" id="c_content">
+        <h3 id="cpp_basic">谈谈引用和指针的区别和联系?</h3>
+        <p>
+            1. 从概念上来说，指针是一个实体，指针存储变量的地址；引用是个别名。</br>
+            2. 引用只能在定义时初始化一次，之后不能改变指向其它变量（从一而终）；指针变量的值可变。</br>
+            3. 引用必须指向有效的变量，指针可以为空。</br>
+            4. sizeof指针对象和引用对象的意义不一样。sizeof引用得到的是所指向的变量的大小，而sizeof指针是对象地址的大小。</br>
+            5. 指针和引用自增(++)自减(--)意义不一样。</br>
+            6. 相对而言，引用比指针更安全。</br>
+        </p>
+        <h3>C++中使用哪些技术可以替代宏？</h3>
+        <p>
+            1. 使用const/enum/inline function 可以替代宏。</br>
+            2. const和enum替代宏常量</br>
+            3. inline function替代宏函数。</br>
+        </p>
+
+        <h3>为什么建议使用使用这些技术去替代宏?</h3>
+        <p>
+            1. 宏不方便调试查看，const/enum/inline function可以调试。</br>
+            2. 写宏函数容易出错，代码的可读性和可维护性差。</br>
+            3. 宏常量和宏函数缺少类型安全的检查，使用const/enum/inline function时编译器会进行类型安全的检查。</br>
+        </p>
+
+        <h3>malloc/free和new/delete的区别和联系？</h3>
+        <p>
+            1. 它们都是动态管理内存的入口。</br>
+            2. malloc/free是C标准库的函数，new/delete是C++运算符。</br>
+            3. malloc/free需要手动计算空间大小，new/delete可自动计算类型的大小。</br>
+            4. malloc的返回值是void*，new的返回值是对象类型的指针。</br>
+            5. malloc/free只是动态分配内存空间/释放空间。而new/delete除了分配内存空间还会调用构造函数和析构函数进行初始化或析构。</br>
+        </p>
+
+        <h3>在C++程序中链接被C编译器编译后的函数，为什么要加extern"c"？</h3>
+        <p>
+            1. C++支持函数重载，C语言不支持函数重载。</br>
+            2. C++为了支持函数重载，按照不同编译器的函数修饰规则，对函数名进行了处理，加入函数的参数类型进行修饰。</br>
+            3. 当函数被C编译器编译，编译后函数名没有进行修饰，所以要加extern"c"告诉编译器使用c的方式进行查找链接。</br>
+        </p>
+
+        <h3 id="cpp_class">C++中struct和class的区别？</h3>
+        <p>
+            1. struct默认的访问限制符是public，struct继承关系默认是public</br>
+            2. class默认的访问先支付是private，class继承关系默认是private</br>
+        </p>
+
+        <h3>空类的大小</h3>
+        <p>
+            class Empty</br>
+            {};</br>
+            sizeof(Empty)是多少？为什么？</br>
+        </p>
+
+        <h3>什么是单例模式，说说你对单例模式的理解，设计实现一个单例类class Singleton.</h3>
+        <p>
+            1. 单例模式--把类设计成单例模式，保证了程序系统中只有一个对象实例且很容易被访问到，</br>
+            我们这里使用单例模式主要是用来减少依赖关系，单例模式将会贯穿我们整个项目。</br>
+            // 可用其它方式设计单例</br>
+            class Singleton</br>
+            {</br>
+            public:</br>
+            Singleton* GetIntance();</br>
+            private:</br>
+            static Singleton* _sIntance;</br>
+            static mutex _sMutex;</br>
+            };</br>
+        </p>
+
+        <h3 id="cpp_obj">面向对象的三大特性是什么？分别描述一下你对它们的理解。</h3>
+        <p>
+            1. 封装、继承、多态。</br>
+            2. 封装，把方法和数据封装到一个类中，通过访问控制符public/protected/private隐藏部分成员，暴露部分成员。</br>
+               提高程序的安全性和内聚度，设计出低耦合高内聚的系统。</br>
+            3. 继承，多个子类去继承父类的成员，达到复用。通过继承方式和访问控制符，控制继承哪些成员。</br>
+            4. 多态，多态就是多种形态，C++中分为静态多态和动态多态，提高程序的灵活性。</br>
+        </p>
+
+        <h3>什么多态？动态多态在C++语言层是怎么实现的？</h3>
+        <p>
+            1. 多态分为静态多态和动态多态。</br>
+            2. 静态多态就是函数重载；</br>
+            3. 动态多态是子类去继承父类，子类重写父类的虚方法。</br>
+            4. 动态多态是通过虚函数表实现的。</br>
+        </p>
+    </div>
+    <div class="" id="c_footer">
+
+    </div>
+</div>
+
+</body>
+</html>

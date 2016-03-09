@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Linux－Makefile</title>
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <style type="text/css">
+        /* Custom Styles */
+        ul.nav-tabs{
+            width: 260px;
+            margin-top: 20px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+        }
+        ul.nav-tabs li{
+            margin: 0;
+            border-top: 1px solid #ddd;
+        }
+        ul.nav-tabs li:first-child{
+            border-top: none;
+        }
+        ul.nav-tabs li a{
+            margin: 0;
+            padding: 8px 16px;
+            border-radius: 0;
+        }
+        ul.nav-tabs li.active a, ul.nav-tabs li.active a:hover{
+            color: #fff;
+            background: #0088cc;
+            border: 1px solid #0088cc;
+        }
+        ul.nav-tabs li:first-child a{
+            border-radius: 4px 4px 0 0;
+        }
+        ul.nav-tabs li:last-child a{
+            border-radius: 0 0 4px 4px;
+        }
+        ul.nav-tabs.affix{
+            top: 10px; /* Set the top position of pinned element */
+        }
+        .col-xs-10{
+            /*border: thin;*/
+            /*border-style: ridge;*/
+        }
+        .code{
+            border: thin;
+            border-style: ridge;
+            padding: 5px 10px;
+            margin: 0px;
+        }
+        .categories{
+            /*position: absolute;*/
+            margin-top: 80px;
+            bottom: 0;
+            width: 100%;
+            height: 150px;
+            background-color: #ffffff;
+            border-top: thin;
+            border-top-style: ridge;
+            text-align: center;
+            border-bottom: thin;
+            border-bottom-style: ridge;
+
+        }
+        .categories .col-xs-4{
+            padding-top: 10px;
+            border-color: #000000;
+            border-right: thin;
+            border-right-style: ridge;
+        }
+        .container-fluid{
+            height: 50px;
+        }
+        .container{
+            padding-top: 0px;
+        }
+        li a i{
+            clear: both;
+            float: right;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#myNav").affix({
+                offset: {
+                    top: 125
+                }
+            });
+        });
+    </script>
+</head>
+<body data-spy="scroll" data-target="#myScrollspy">
+
+<!--Navar-->
+<div class="container-fluid" id="header">
+    <ul class="breadcrumb">
+        <li><a href="../../index.html"><i class="glyphicon glyphicon-home"></i></a><span class="divider"></span></li>
+        <li><a href="#">Linux</a> <span class="divider"></span></li>
+        <li class="active">进程</li>
+    </ul>
+</div>
+
+<div class="container">
+<div class="jumbotron">
+    <h1>Linux进程</h1>
+    <p>承担分配系统资源的实体</p>
+</div>
+<div class="row">
+<div class="col-xs-3" id="myScrollspy">
+    <ul class="nav nav-tabs nav-stacked" id="myNav">
+        <li><a href="../../index.html">回到网站首页<i class="glyphicon glyphicon-chevron-right"></i></a></li>
+        <li><a href="#section-1">何为进程<i class="glyphicon glyphicon-chevron-right"></i></a></li>
+        <li><a href="#section-2">进程特点<i class="glyphicon glyphicon-chevron-right"></i></a></li>
+        <li><a href="#section-3">僵尸进程<i class="glyphicon glyphicon-chevron-right"></i></a></li>
+        <li><a href="#section-4">孤儿进程<i class="glyphicon glyphicon-chevron-right"></i></a></li>
+        <li><a href="#section-5">精灵进程<i class="glyphicon glyphicon-chevron-right"></i></a></li>
+        <li><a href="#section-6">进程状态<i class="glyphicon glyphicon-chevron-right"></i></a></li>
+        <li><a href="#section-7">进程优先级<i class="glyphicon glyphicon-chevron-right"></i></a></li>
+        <li><a href="#section-8">进程与资源<i class="glyphicon glyphicon-chevron-right"></i></a></li>
+        <li><a href="#section-9">进程与线程<i class="glyphicon glyphicon-chevron-right"></i></a></li>
+        <li><a href="#section-10">进程其他概念<i class="glyphicon glyphicon-chevron-right"></i></a></li>
+        <li class="active"><a href="#header">回到本页顶部<i class="glyphicon glyphicon-chevron-right"></i></a></li>
+    </ul>
+</div>
+<div class="col-xs-9">
+<h2 id="section-1">何为进程</h2>
+<div class="code">
+    <p>1. Linux环境下，开发c/c++项目时，源文件数目往往较多，工程目录组织结构往往较为复杂，此时如果要编译构建工程，就需要我们手动编译，链接工程，工作量巨大</p>
+    <p>2. 我们通过编写Makefile文件，结合make工具，便可实现整个工程的自动化编译过程，大大提高开发效率</p>
+    <p>3. 在Windows下，这部分工作已经由多数IDE解决，但是在Linux下，需要工程师通过编写Makefile，自行维护工程的构建方式</p>
+</div>
+<!--<hr>-->
+
+<h2 id="section-2">进程特点</h2>
+<div class="code">
+    <p>1. 在shell脚本文件中，我们输入的第一行，一般按照'#!'开头，该符号我们称为”Shebang”或”Sha-bang”（还有其他名称，略）</p>
+    <p>2. 该符号指明了shell脚本的解释器程序，如/bin/bash</p>
+    <p>3. 如果脚本文件中没有#!这一行，那么脚本运行时，不会进行解释器替换。具体见《shell运行原理》部分</p>
+</div>
+
+<!--<hr>-->
+<h2 id="section-3">僵尸进程</h2>
+<div class="code">
+    <p>1. 在当前有效的工作目录下新建Makefile(或makefile)文件，注意文件名称不能错</p>
+    <p>2. 在当前有效的工作目录下新建一个测试用的C源文件，名称为test.c</p>
+    <p>3. 用自己擅长的代码编辑器（这里使用vim），编辑一份有效代码，并保存退出。例如：</p>
+                <pre><strong>
+                    <code>
+                        #include &lt;stdio.h&gt;
+                        int main()
+                        {
+                        printf("hello world\n");
+                        return 0;
+                        }
+                    </code></strong>
+                </pre>
+    <p>4. 打开Makefile，输入构建工程的方法（如，编译我们的test.c），并保存退出。 例如</p>
+                <pre><strong>
+                    <code>
+                        test:test.o
+                        gcc -o test test.o      #此处必须以tab键开头，下同
+                        test.o:test.s
+                        gcc -c test.s -o test.o #此处必须以tab键开头
+                        test.s:test.i
+                        gcc -S test.i -o test.s
+                        test.i:test.c
+                        gcc -E test.c -o test.i #此处必须以tab键开头
+                        .PHONY:clean
+                        clean:
+                        rm -f *.o *.s *.i test  #此处也必须以tab键开头
+                    </code></strong>
+                </pre>
+    <p>5. 注意，上面的Makefile可以写的很简洁，此处仅仅为了说明问题。另外，诸位应先忽略Makefile具体内容，重点看效果。</p>
+    <p>6. 在当前有效工作目录下，运行make指令，即可得到结果</p>
+    <p>7. 在继续往下阅读之前，诸位需要了解一下编译链接的相关背景知识，请移步<a>这里</a>,如已经了解过，请继续阅读</p>
+</div>
+
+<!--<hr>-->
+<h2 id="section-4">孤儿进程</h2>
+<div class="code">
+    <p>1. 如上Makefile，‘:’左侧的test, test.o, test.s, test.i等叫做目标文件，':'右侧文件，称为依赖文件列表（该行描述依赖关系）</p>
+    <p>2. 紧跟在目标文件:依赖列表的下一行，以tab键开头的称为依赖方法（描述如何通过依赖文件列表生成目标文件）</p>
+    <p>3. 执行make工具时，当欲生成的目标文件不存在时，则依据依赖文件列表和依赖方法，生成目标文件</p>
+    <p>4. 但是，依赖文件不存在时，make工具需要根据Makefile中的描述，自动化推导依赖文件的的生成方法，并依据方法，生成依赖文件</p>
+    <p>5. 如：要生成test程序，就要存在test.o, 但test.o不存在，make就会按照makefile中描述的依赖关系，自动推导出 test.o依赖test.s</p>
+    <p>6. 但是test.s也不存在，需要先生成test.i,而test.i不存在，但它依赖test.c，此时，可以依据test.c生成test.i(gcc -E test.c -o test.i)</p>
+    <p>7. 进而，依次依据各自的依赖方法，生成test.s test.o和test</p>
+</div>
+<!--<hr>-->
+<h2 id="section-5">精灵进程</h2>
+<div class="code">
+    <p>1. 精灵进程（Daemon进程），也被称为守护进程，是一种脱离控制终端，在后台周期性独立运行某种服务的进程</p>
+    <p></p>
+</div>
+<!--<hr>-->
+<h2 id="section-6">Makefile变量</h2>
+<div class="code">
+    <p>1. Makeile中变量可以无需声明，直接使用</p>
+    <p>2. Makefile中变量如需引用，必须放到$(变量)中</p>
+    <p>3. Makeile中变量大小写敏感，</p>
+    <p>4. Makefile中，有若干变量，有特殊含义，如$@，$^，$&lt等，我们称之为自动变量</p>
+    <p>5. 还是依据上面的例子，我们按照自动变量，重新编写一个Makefile，如下：</p>
+                <pre>
+                    <strong>
+                        test:test.o
+                        gcc -o $@ $^        #'$^'表示把依赖列表整体放到该编译命令中，进行编译或链接
+                        test.o:test.s
+                        gcc -c $&lt; -o $@     #'$&lt'表示把依赖列表中的文件一个一个拿出来，进行处理
+                        test.s:test.i
+                        gcc -S $&lt; -o $@     #'$@'表示该依赖关系要生成的目标文件
+                        test.i:test.c
+                        gcc -E $&lt; -o $@
+                        .PHONY:clean
+                        clean:
+                        rm -f *.o *.s *.i test
+                    </strong>
+                </pre>
+    <p>6. 使用变量和自动变量，一个精简版的Makefile</p>
+                <pre>
+                    <strong>
+                        BIN=test
+                        SRC=test.c
+                        CC=gcc
+                        $(BIN):$(SRC)
+                        $(CC) -o $@ $&lt;
+                        .PHONY:clean
+                        clean:
+                        rm -f *.o *.s *.i $(BIN)
+                    </strong>
+                </pre>
+</div>
+<!--<hr>-->
+<h2 id="section-7">Makefile伪目标</h2>
+<div class="code">
+    <p>1. 前面的'.PHONY',用来声明一个伪目标</p>
+    <p>2. ‘.PHONY:’后面的字符串（如：clean）称为伪目标名称</p>
+    <p>3. 伪目标就是告诉make工具，不需要为该目标文件生成具体文件</p>
+</div>
+<h2 id="section-8">Makefile函数</h2>
+<div class="code">
+    <p>1. dir和notdir函数：分别取多个路径的路径名和程序名称，例子如下：</p>
+                <pre>
+                    <strong>
+                        PWD1=/test/test1/test_bin1.cpp
+                        PWD2=/test/test2/test_bin2.cpp
+                        DIR=$(dir $(PWD1) $(PWD2))
+                        BIN=$(notdir $(PWD1) $(PWD2))
+
+                        .PHONY:test
+                        test:
+                        @echo $(DIR)  # 提取出路径
+                        @echo $(BIN)  # 提取按照‘／’分割的最后一列
+                    </strong>
+                </pre>
+    <p>2. suffix函数：提取文件名后缀，例子如下：</p>
+                <pre>
+                    <strong>
+                        SRC1=test_bin1.cpp
+                        SRC2=test_bin2.cpp
+                        SUFF=$(suffix $(SRC1) $(SRC2))
+                        .PHONY:test
+                        test:
+                        @echo $(SUFF) #提取文件名称的后缀
+                    </strong>
+                </pre>
+    <p>3. basename函数：提取文件名前缀，例子如下：</p>
+                <pre>
+                    <strong>
+                        SRC1=test_bin1.cpp
+                        SRC2=test_bin2.cpp
+                        BASE=$(basename $(SRC1) $(SRC2))
+                        .PHONY:test
+                        test:
+                        @echo $(BASE) #提取文件名前缀
+                    </strong>
+                </pre>
+    <p>4. addsuffix函数：加后缀函数，例子如下：</p>
+                <pre>
+                    <strong>
+                        SRC1=test_bin1
+                        SRC2=test_bin2
+                        SRC=$(addsuffix .cpp,$(SRC1) $(SRC2))
+                        .PHONY:test
+                        test:
+                        @echo $(SRC) #给字符串加上后缀
+                    </strong>
+                </pre>
+    <p>5. addprefix函数：加前缀函数，例子如下：</p>
+                <pre>
+                    <strong>
+                        SRC1=test_bin1
+                        SRC2=test_bin2
+                        SRC=$(addprefix /test/test_src/,$(SRC1) $(SRC2))
+                        .PHONY:test
+                        test:
+                        @echo $(SRC)
+                    </strong>
+                </pre>
+    <p>6. foreach函数：Makefile循环函数，例子如下：</p>
+                <pre>
+                    <strong>
+                        SRC=a b c d e f
+                        RES=$(foreach val,$(SRC),$(val).cpp)
+                        .PHONY:test
+                        test:
+                        @echo $(RES)
+                    </strong>
+                </pre>
+</div>
+<h2 id="section-9">Makefile中使用shell</h2>
+<div class="code">
+    <p>Makefile中也可以使用shell来进行文本处理，具体如下：</p>
+                <pre>
+                    <strong>
+                        SRC=test.cpp
+                        PRE=$(shell echo $(SRC) | cut -b 1-4)
+                        SUFF=$(shell echo $(SRC) | cut -b 5-8)
+                        .PHONY:test
+                        test:
+                        @echo $(PRE)
+                        @echo $(SUFF)
+                    </strong>
+                </pre>
+</div>
+<h2 id="section-10">一个完整的Makefile示例 - 进度条</h2>
+<div class="code">
+    <p>我们用C语言结合Makefile，做一个进度条，代码如下：</p>
+    <p>1. 在当前目录下， 建立头文件proc.h, 如下：</p>
+                <pre>
+                    <strong>
+                        #ifndef _PROC_
+                        #define _PROC_
+
+                        #include &lt;stdio.h&gt;
+                        #include &lt;string.h&gt;
+                        #include &lt;unistd.h&gt;
+
+                        void proc();
+                        #endif
+                    </strong>
+                </pre>
+    <p>2. 在当前目录下， 建立源文件proc.c，如下：</p>
+                <pre>
+                    <strong>
+                        #include "proc.h"
+
+                        void proc()
+                        {
+                        int index=0;
+                        char str[101];
+                        char *arr="|\\-/";
+                        memset(str, '\0', sizeof(str));
+                        while( index < 100 ){
+                        str[index++]='=';
+                        printf("[%-100s][%d%%][%c]\r", str, index, arr[index%4]);
+                        fflush(stdout);
+                        usleep(10000);
+                        }
+                        printf("\n");
+                        }
+                        int main()
+                        {
+                        proc();
+                        return 0;
+                        }
+                    </strong>
+                </pre>
+    <p>3. 在当前目录下，建立Makefile文件，如下：</p>
+                <pre>
+                    <strong>
+                        PWD=$(shell pwd)
+                        SRC=proc.c
+                        BIN=$(basename $(SRC))
+                        INCLUDE=$(PWD)/
+                        CC=gcc
+
+                        $(BIN):$(PWD)/$(SRC)
+                        $(CC) -o $@ $^ -I$(INCLUDE)
+                        .PHONY:clean
+                        clean:
+                        rm -f $(BIN)
+                    </strong>
+                </pre>
+    <p>保存退出，直接make，编译生成proc可执行程序，运行即可看到效果</p>
+</div>
+<!--<hr>-->
+<nav>
+    <ul class="pager">
+        <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> 上一页</a></li>
+        <li class="next"><a href="SHELL1.html">下一页 <span aria-hidden="true">&rarr;</span></a></li>
+    </ul>
+</nav>
+</div>
+
+</div>
+</div>
+<footer class="categories">
+    <div class="col-xs-4">
+        <h4>联系我们</h4>
+        <p>电话:</p>
+        <p>微信号码:</p>
+        <p>技术交流群：</p>
+    </div>
+    <div class="col-xs-4">
+        <h4>合作伙伴</h4>
+        <p><a href="#">比特科技</a></p>
+        <p><a href="#">千育千寻科技有限公司</a></p>
+    </div>
+    <div class="col-xs-4">
+        <h4>赞助商</h4>
+        <p>暂无</p>
+        <p>XXXX</p>
+        <p>XXXX</p>
+    </div>
+</footer>
+</body>
+</html>
+

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Shell</title>
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <style type="text/css">
+        /* Custom Styles */
+        ul.nav-tabs{
+            width: 260px;
+            margin-top: 20px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+        }
+        ul.nav-tabs li{
+            margin: 0;
+            border-top: 1px solid #ddd;
+        }
+        ul.nav-tabs li:first-child{
+            border-top: none;
+        }
+        ul.nav-tabs li a{
+            margin: 0;
+            padding: 8px 16px;
+            border-radius: 0;
+        }
+        ul.nav-tabs li.active a, ul.nav-tabs li.active a:hover{
+            color: #fff;
+            background: #0088cc;
+            border: 1px solid #0088cc;
+        }
+        ul.nav-tabs li:first-child a{
+            border-radius: 4px 4px 0 0;
+        }
+        ul.nav-tabs li:last-child a{
+            border-radius: 0 0 4px 4px;
+        }
+        ul.nav-tabs.affix{
+            top: 10px; /* Set the top position of pinned element */
+        }
+        .col-xs-10{
+            /*border: thin;*/
+            /*border-style: ridge;*/
+        }
+        .code{
+            border: thin;
+            border-style: ridge;
+            padding: 5px 10px;
+            margin: 0px;
+        }
+        .categories{
+            /*position: absolute;*/
+            margin-top: 80px;
+            bottom: 0;
+            width: 100%;
+            height: 150px;
+            background-color: #ffffff;
+            border-top: thin;
+            border-top-style: ridge;
+            text-align: center;
+            border-bottom: thin;
+            border-bottom-style: ridge;
+
+        }
+        .categories .col-xs-4{
+            padding-top: 10px;
+            border-color: #000000;
+            border-right: thin;
+            border-right-style: ridge;
+        }
+        .container-fluid{
+            height: 50px;
+        }
+        .container{
+            padding-top: 0px;
+        }
+        li a i{
+            clear: both;
+            float: right;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#myNav").affix({
+                offset: {
+                    top: 125
+                }
+            });
+        });
+    </script>
+</head>
+<body data-spy="scroll" data-target="#myScrollspy">
+
+<!--Navar-->
+<div class="container-fluid" id="header">
+    <ul class="breadcrumb">
+        <li><a href="../../index.html"><i class="glyphicon glyphicon-home"></i></a><span class="divider"></span></li>
+        <li><a href="#">学习园地</a> <span class="divider"></span></li>
+        <li class="active">shell</li>
+    </ul>
+</div>
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>shell 脚本 － 初识</h1>
+        <p>用效率来支持运维</p>
+    </div>
+    <div class="row">
+        <div class="col-xs-3" id="myScrollspy">
+            <ul class="nav nav-tabs nav-stacked" id="myNav">
+                <li class="active"><a href="#section-1">第一个shell脚本<i class="glyphicon glyphicon-chevron-right"></i></a></li>
+                <li><a href="#section-2">#! - shebang<i class="glyphicon glyphicon-chevron-right"></i></a></li>
+                <li><a href="#section-3">shell解释器<i class="glyphicon glyphicon-chevron-right"></i></a></li>
+                <li><a href="#section-4">shell运行方式<i class="glyphicon glyphicon-chevron-right"></i></a></li>
+                <li><a href="#section-5">shell特点<i class="glyphicon glyphicon-chevron-right"></i></a></li>
+                <li><a href="#section-6">常见shell版本<i class="glyphicon glyphicon-chevron-right"></i></a></li>
+                <li><a href="#section-7">shell历史<i class="glyphicon glyphicon-chevron-right"></i></a></li>
+                <li><a href="#header">回到本页顶部<i class="glyphicon glyphicon-chevron-right"></i></a></li>
+                <li><a href="../../index.html">回到网站首页<i class="glyphicon glyphicon-chevron-right"></i></a></li>
+            </ul>
+        </div>
+        <div class="col-xs-9">
+            <h2 id="section-1">第一个shell脚本</h2>
+            <div class="code">
+                <p>1. Linux环境下，新建以.sh结尾的文件，如 touch test.sh：</p>
+                <p>2. 打开文件.sh文件（如： vim test.sh），输入如下内容：</p>
+                <p><strong><code>#!/bin/bash</code></strong></p>
+                <p><strong><code>echo "hello world!"</code></strong></p>
+                <p>3. 保存退出！</p>
+                <p>4. 给shell脚本添加可执行权限，chmod u+s 你的.sh文件， 如：chmod u+s test.sh</p>
+                <p>5. 运行shell脚本， 如./test.sh</p>
+            </div>
+            <!--<hr>-->
+
+            <h2 id="section-2">#! - shebang</h2>
+            <div class="code">
+                <p>1. 在shell脚本文件中，我们输入的第一行，一般按照'#!'开头，该符号我们称为”Shebang”或”Sha-bang”（还有其他名称，略）</p>
+                <p>2. 该符号指明了shell脚本的解释器程序，如/bin/bash</p>
+                <p>3. 如果脚本文件中没有#!这一行，那么脚本运行时，不会进行解释器替换。具体见《shell运行原理》部分</p>
+            </div>
+
+            <!--<hr>-->
+            <h2 id="section-3">shell解释器</h2>
+            <div class="code">
+                <p>1. shell被称为Linux外壳程序，用来在交互模式下对用户的输入信息进行解析，shell也称为“命令行解释器”</p>
+                <p>2. 我们通常说shell代表我们的”命令行解释器“</p>
+                <p>3. 我们通常所说的shell脚本代表我们所编辑的文本文件</p>
+                <p>4. 注意区分，shell脚本， shell解释器，shell解释器进程，shell进程（后续会说明）</p>
+            </div>
+
+            <!--<hr>-->
+            <h2 id="section-4">shell脚本运行方式</h2>
+            <div class="code">
+                <p>1. 假定我们的shell脚本名称叫做<strong>bit.sh</strong></p>
+                <p>2. shell解释器进程会先fork一个子进程并调用exec执行./bit.sh这个脚本程序</p>
+                <p>3. 子进程程序替换shebang指定的解释器，用解释器程序的代码段替换当前进程,并且从解释器的_start开始执行,而这个文本文件bit.sh被当作命令行参数传给解释器</p>
+                <p>4. shell解释器对shell脚本中的命令逻辑进行逐行解释</p>
+            </div>
+            <!--<hr>-->
+            <h2 id="section-5">shell特点</h2>
+            <div class="code">
+                <p>1. 非编译型语言</p>
+                <p>2. 若类型语言</p>
+                <p>3. 强大的批处理能力</p>
+                <p>4. 提高自动化部署，自动化运维效率</p>
+                <p>5. 编写简单，容易实现</p>
+            </div>
+            <!--<hr>-->
+            <h2 id="section-6">常见shell版本</h2>
+            <div class="code">
+                <p>1. 文件/etc/shells给出了系统中所有已知(不一定已安装)的Shell,除了上面提到的Shell之外还有很多变种。</p>
+                <p>2. 常见的shell版本：</p>
+                <p><strong>
+                    <code>
+                        /usr/bin/ksh</br>
+                        /bin/ksh</br>
+                        /usr/bin/rc</br>
+                        /usr/bin/tcsh</br>
+                        /bin/tcsh</br>
+                        /usr/bin/esh</br>
+                        /bin/dash</br>
+                        /bin/bash</br>
+                        /bin/rbash</br>
+                        /usr/bin/screen</br>
+                    </code></strong>
+                </p>
+            </div>
+            <!--<hr>-->
+            <h2 id="section-7">shell历史</h2>
+            <div class="code">
+                <p>省略</p>
+            </div>
+            <!--<hr>-->
+            <nav>
+                <ul class="pager">
+                    <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> 上一页</a></li>
+                    <li class="next"><a href="SHELL1.html">下一页 <span aria-hidden="true">&rarr;</span></a></li>
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+</div>
+<footer class="categories">
+    <div class="col-xs-4">
+        <h4>联系我们</h4>
+        <p>电话:</p>
+        <p>微信号码:</p>
+        <p>技术交流群：</p>
+    </div>
+    <div class="col-xs-4">
+        <h4>合作伙伴</h4>
+        <p><a href="#">比特科技</a></p>
+        <p><a href="#">千育千寻科技有限公司</a></p>
+    </div>
+    <div class="col-xs-4">
+        <h4>赞助商</h4>
+        <p>暂无</p>
+        <p>XXXX</p>
+        <p>XXXX</p>
+    </div>
+</footer>
+</body>
+</html>

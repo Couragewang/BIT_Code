@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <h1>Linux环境变量</h1>
+    <h2>环境变量概念</h2><hr/>
+    <p>
+        Linux是一个多用户的操作系统。多用户意味着每个用户登录系统后，都有自己专用的运行环境。而这个环境是由一组变量所定义,这组变量被称为环境变量。用户可以对自己的环境变量进行修改以达到对环境的要求。
+    环境变量是和Shell紧密相关，它可以通过Shell命令来设置。环境变量又可以被所有当前用户所运行的程序所使用。对于bash来说，可以通过变量名来访问相应的环境变量。
+    </p>
+    <hr/>
+    <h2>Linux常见环境变量</h2><hr/>
+    <p>
+        <ul>
+            <li>PATH：指定命令的搜索路径</li>
+            <li>HOME：指定用户的主工作目录（即用户登陆到Linux系统中时，默认的目录）</li>
+            <li>HISTSIZE：指保存历史命令记录的条数</li>
+            <li>LOGNAME：指当前用户的登录名</li>
+            <li>HOSTNAME：指主机的名称，许多应用程序如果要用到主机名的话，通常是从这个环境变量中来取得的</li>
+            <li>SHELL：指当前用户用的是哪种Shell</li>
+            <li>PS1：命令基本提示符，对于root用户是#，对于普通用户是$</li>
+            <li>PS2：附属提示符，默认是“>”</li>
+    </ul>
+        注意：上述变量的名字并不固定，如HOSTNAME在某些Linux系统中可能设置成HOST
+    </p>
+    <hr/>
+    <h2>Linux常见环境变量操作命令</h2><hr/>
+    <p>
+        <ul>
+            <li>echo: 显示某个环境变量值， 如：echo $PATH</li>
+            <li>export: 设置一个新的环境变量, 如：export HELLO="hello" (可以无引号)</li>
+            <li>env: 显示所有环境变量</li>
+            <li>set: 显示本地定义的shell变量</li>
+            <li>unset: 清除环境变量,如：unset HELLO</li>
+            <li>readonly: 设置只读环境变量, 如：readonly HELLO</li>
+        </ul>
+    </p>
+    <hr/>
+    <h2>有关Linux动态库查找</h2><hr/>
+    <p>
+        Linux共享库环境变量(LD_LIBRARY_PATH),该环境变量主要用于指定查找共享库(动态链接库)时搜索除了默认路径之外的其他路径，
+        并且该路径在默认路径之前查找
+    </p>
+    <hr/>
+</body>
+</html>

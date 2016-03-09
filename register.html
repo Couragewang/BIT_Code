@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>比特注册</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <style>
+        form{
+            margin-top: 30px;
+        }
+        h1{
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid" id="header">
+    <ul class="breadcrumb">
+        <li><a href="index.html"><i class="glyphicon glyphicon-home"></i></a><span class="divider"></span></li>
+        <li class="active">注册</li>
+    </ul>
+</div>
+<h1><strong>注册比特科技</strong></h1>
+<form class="form-horizontal col-xs-10"action="register_user.php" method="post">
+    <div class="form-group">
+        <label for="name" class="col-sm-2 control-label">用户名＊</label>
+        <div class="col-sm-10">
+            <input type="username" class="form-control" name="name" placeholder="Name">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="passwd" class="col-sm-2 control-label">密码＊</label>
+        <div class="col-sm-10">
+            <input type="password" class="form-control" name="passwd" placeholder="Password">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="cpasswd" class="col-sm-2 control-label">确认密码＊</label>
+        <div class="col-sm-10">
+            <input type="password" class="form-control" name="cpasswd" placeholder="Password">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="phone" class="col-sm-2 control-label">电话＊</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="phone" placeholder="Phone Number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="email" class="col-sm-2 control-label">邮箱</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="email" placeholder="Email">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="school" class="col-sm-2 control-label">学校＊</label>
+        <div class="col-sm-10">
+            <select class="form-control" name="school">
+                <option>陕西科技大学</option>
+                <option>西安理工大学</option>
+                <option>西安石油大学</option>
+                <option>西安工业大学</option>
+                <option>其他</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="school" class="col-sm-2 control-label">年级＊</label>
+        <div class="col-sm-10">
+            <select class="form-control" name="Grade">
+                <option>大一</option>
+                <option>大二</option>
+                <option>大三</option>
+                <option>大四</option>
+                <option>研一</option>
+                <option>研二</option>
+                <option>研三</option>
+                <option>专科</option>
+                <option>其他</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="school" class="col-sm-2 control-label">专业</label>
+        <div class="col-sm-10">
+            <select class="form-control" name="major">
+                <option>计算机科学与技术</option>
+                <option>网络</option>
+                <option>软件</option>
+                <option>信息管理</option>
+                <option>其他计算机相关</option>
+                <option>其他</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="school" class="col-sm-2 control-label">比特班级</label>
+        <div class="col-sm-10">
+            <select class="form-control" name="bit_class">
+                <option>比特5班</option>
+                <option>比特6班</option>
+                <option>比特9班</option>
+                <option>比特11班</option>
+                <option>比特12班</option>
+                <option>比特13班</option>
+                <option>比特14班</option>
+            </select>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary btn-block">注册</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>
+
