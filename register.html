@@ -61,8 +61,8 @@
     <div class="form-group">
         <label for="school" class="col-sm-2 control-label">学校＊</label>
         <div class="col-sm-10">
-            <select class="form-control" name="school">
-                <option>陕西科技大学</option>
+            <select class="form-control" name="school" >
+                <option selected="selected">陕西科技大学</option>
                 <option>西安理工大学</option>
                 <option>西安石油大学</option>
                 <option>西安工业大学</option>
@@ -73,10 +73,10 @@
     <div class="form-group">
         <label for="school" class="col-sm-2 control-label">年级＊</label>
         <div class="col-sm-10">
-            <select class="form-control" name="Grade">
+            <select class="form-control" name="Grade" >
                 <option>大一</option>
                 <option>大二</option>
-                <option>大三</option>
+                <option selected="selected">大三</option>
                 <option>大四</option>
                 <option>研一</option>
                 <option>研二</option>
@@ -90,7 +90,7 @@
         <label for="school" class="col-sm-2 control-label">专业</label>
         <div class="col-sm-10">
             <select class="form-control" name="major">
-                <option>计算机科学与技术</option>
+                <option selected="selected">计算机科学与技术</option>
                 <option>网络</option>
                 <option>软件</option>
                 <option>信息管理</option>
@@ -103,7 +103,7 @@
         <label for="school" class="col-sm-2 control-label">比特班级</label>
         <div class="col-sm-10">
             <select class="form-control" name="bit_class">
-                <option>比特5班</option>
+                <option selected="selected">比特5班</option>
                 <option>比特6班</option>
                 <option>比特9班</option>
                 <option>比特11班</option>
@@ -113,11 +113,9 @@
             </select>
         </div>
     </div>
-
-
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-primary btn-block">注册</button>
+            <button type="submit" class="btn btn-primary btn-block" name="submit" value="注册">注册</button>
         </div>
     </div>
 </form>
