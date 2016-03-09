@@ -20,7 +20,7 @@
             echo "<script>alert('有字段为空，请重新输入！'); history.go(-1);</script>";
         }else{
             if( $pwd == $cpwd ){
-                echo "insert done...<br/>"
+                echo "insert done...<br/>";
             }else{
                 echo "<script>alert('密码不一致！'); history.go(-1);</script>";
             }
