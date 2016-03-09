@@ -13,7 +13,8 @@
         }
         //normal code
         mysql_select_db("bit", $con);
-        $sql="INSERT INTO student_base_info (name, pwd, phone, email, school, grade, major, bit_class) VALUES "."(".$data.")";
+        $sql="INSERT INTO student_base_info (name, passwd, phone, email, school, grade, major, bit_class) VALUES "."(".$data.")";
+        echo $sql<br/>;
         if (!mysql_query($sql,$con))
         {
             die('insert error: '.mysql_error());

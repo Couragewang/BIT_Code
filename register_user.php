@@ -14,7 +14,7 @@
         $phone=$_POST['phone'];
         $email=$_POST['email'];
         $school=$_POST['school'];
-        $grade=$_POST['Grade'];
+        $grade=$_POST['grade'];
         $major=$_POST['major'];
         $bit_class=$_POST['bit_class'];
 
