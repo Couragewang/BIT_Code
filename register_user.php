@@ -23,11 +23,11 @@
 	//	$pwd="123456";
 	//	$cpwd="123456";
 	//	$phone="123456789";
-    //    $email="qq";
-    //    $school="qinghua";
-    //    $grade="wuban";
-    //    $major = "jihke";
-    //    $bit_class="5";
+    //  $email="qq";
+    //  $school="qinghua";
+    //  $grade="wuban";
+    //  $major = "jihke";
+    //  $bit_class="5";
         if( $name == "" || $pwd == "" || $cpwd == "" || $phone == "" ){
             echo "<script>alert('输入信息有空值！'); history.go(-1);</script>";
         }else{
