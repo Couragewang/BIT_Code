@@ -1,32 +1,28 @@
 <html>  
-<head>  
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />  
-<title></title>  
-<script type="text/javascript">       
-function countDown(secs,surl){
-    var jumpTo = document.getElementById('jumpTo');
-    jumpTo.innerHTML=secs;
-	if(--secs>0){
-        setTimeout("countDown("+secs+",'"+surl+"')",1000);
-	}
-	else{
-	    location.href=surl;
-		-ma
-	}
-}
-</script>   
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title></title>
+    <script type="text/javascript">
+        function countDown(secs,surl){
+            var jumpTo = document.getElementById('jumpTo');
+            jumpTo.innerHTML=secs;
+            if(--secs>0){
+                setTimeout("countDown("+secs+",'"+surl+"')",1000);
+            }
+            else{
+                location.href=surl;
+                -ma
+            }
+        }
+    </script>
 </head>  
   
-<body>  
-<<<<<<< HEAD
-<h1><strong>靠靠靠靠靠靠靠</strong></h1>
-<a href="index.html"><span id="jumpTo">5</span>靠靠靠靠靠靠�</a>
-=======
-<h1><strong>注册成功，跳转后请直接登录!</strong></h1>
-<a href="index.html"><span id="jumpTo">5</span>秒后自动跳转，如想立即跳转请点击</a>
->>>>>>> fc339663e40cd924b28b290125581c30ccc72491
-<script type="text/javascript">  
-    countDown(5,'index.html');  
-</script>    
-</body>  
-</html> 
+<body>
+    <h1><strong>娉ㄥ唽鎴愬姛锛岃烦杞悗璇风洿鎺ョ櫥褰�!</strong></h1>
+    <a href="index.html"><span id="jumpTo">5</span>绉掑悗鑷姩璺宠浆锛屽鎯崇珛鍗宠烦杞鐐瑰嚮</a>
+    <script type="text/javascript">
+        countDown(5,'index.html');
+    </script>
+</body>
+</html>
