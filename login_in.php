@@ -13,11 +13,18 @@
 require_once("mysql_db_api.php");
 $name = $_POST["name"];
 $passwd = $_POST["passwd"];
-$info = get_name_passwd();
-if($name == $info["name"] && $passwd == $info["passwd"]){
-    echo "success\n";
-}else{
-    echo "login failed\n";
+
+//for debug
+//$name="hmm";
+//$passwd="123456789";
+if( $name != "" && $passwd != ""){
+	$res = is_allow_login($name, $passwd);
+	if($res){
+		print_r($res);
+		echo "success\n";
+	}else{
+		echo "login failed\n";
+	}
 }
 ?>
 <body>
