@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: hb
+ * Date: 16/3/10
+ * Time: 下午2:29
+ */
     //$data=name,pwd,...,bit_class
     function insert_data( $data ){
 		$servername="localhost";
@@ -19,5 +25,10 @@
 		mysqli_close($conn);
 		return true;
     }
+    function get_name_passwd(){
+        $info["name"]="wanghaibin";
+        $info["passwd"]="123456";
+        return $info;
+    }
 	//insert_data("'1','1','1','1','1','1','1','1'");
-?>
+
