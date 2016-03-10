@@ -1,0 +1,27 @@
+<html>  
+<head>  
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />  
+<title></title>  
+<script type="text/javascript">       
+function countDown(secs,surl){           
+	 var jumpTo = document.getElementById('jumpTo');  
+	  jumpTo.innerHTML=secs;    
+	   if(--secs>0){       
+		        setTimeout("countDown("+secs+",'"+surl+"')",1000);       
+				     }       
+	    else{         
+			     location.href=surl;       
+				      -ma  
+						       }       
+		 }       
+</script>   
+</head>  
+  
+<body>  
+<h1><strong>操作成功, 稍后直接登录！</strong></h1>    
+<a href="index.html"><span id="jumpTo">5</span>秒后系统会自动跳转，也可点击本处直接跳</a>   
+<script type="text/javascript">  
+    countDown(5,'index.html');  
+</script>    
+</body>  
+</html> 
